@@ -8,18 +8,21 @@ In addition to whatever programming support you need, the mentors will also serv
 
 Before getting into the details of the robot it's important to watch the game animation <https://www.youtube.com/watch?v=EMiNmJW7enI>.
 
-### Systems
+### Mechanisms
 
-At a high level the robot has the follow mechanisms:
+To start off with the robot has the following mechanisms:
 
 - KOP Style Differential (Tank) Drive
-- Ground Intake for FUEL that has dual use as a winch for climbing
+- Ground Intake for FUEL
 - Toggleable Pneumatic ramp/shield for collecting GEARs from the LOADING STATION or FUEL from the HOPPERS
 - FUEL Launcher for scoring HIGH in the BOILER
 - FUEL Indexer that feeds the FUEL Launcher
 - FUEL Agitator that sits under the robot's storage area to encourage indexing
+- A winch for climbing the ROPE
 
-Following the completion of this robot another mechanism will be added.
+Following the completion of this simplier robot add:
+
+- A turrent for aiming the FUEL Launcher
 
 ## Setup
 

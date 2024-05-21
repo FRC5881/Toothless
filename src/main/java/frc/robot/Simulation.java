@@ -4,6 +4,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
 import edu.wpi.first.wpilibj.simulation.DoubleSolenoidSim;
+import edu.wpi.first.wpilibj.simulation.ElevatorSim;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 
 public class Simulation {
@@ -36,4 +37,9 @@ public class Simulation {
      * Pneumatic ramp/shield simulation. kForward creates a ramp for FUEL, kReverse retracts the ramp and allows the robot to collect GEARS
      */
     public static final DoubleSolenoidSim rampSim = new DoubleSolenoidSim(PneumaticsModuleType.REVPH, 0, 1);
+
+    /**
+     * Climber simulation, much heavier mechanism than the other components
+     */
+    public static final ElevatorSim climberSim = new ElevatorSim(DCMotor.getNEO(2), 50.0, 50.0, 0.0254, 0.0, 2.0, true, 0.0);
 }

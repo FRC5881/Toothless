@@ -37,11 +37,11 @@ public class Robot extends TimedRobot {
     Simulation.launcherSim.update(dt);
     Simulation.indexerSim.update(dt);
     Simulation.agitatorSim.update(dt);
-
+    Simulation.climberSim.update(dt);
     
     // EXAMPLE USAGE - YOU PROBABLY WANT TO REMOVE
     Simulation.rampSim.set(Value.kForward);
-    SmartDashboard.putBoolean("Ramp", true);
+    SmartDashboard.putBoolean("Ramp", Simulation.rampSim.get() == Value.kForward);
     
     Simulation.drivetrainSim.setInputs(2, 2.1);
     SmartDashboard.putNumber("Left Encoder", Simulation.drivetrainSim.getLeftPositionMeters());
@@ -61,6 +61,9 @@ public class Robot extends TimedRobot {
 
     Simulation.agitatorSim.setInputVoltage(12);
     SmartDashboard.putNumber("Agitator Velocity", Simulation.agitatorSim.getAngularVelocityRPM());
+
+    Simulation.climberSim.setInputVoltage(12);
+    SmartDashboard.putNumber("Climber Velocity", Simulation.climberSim.getPositionMeters());
   }
 
   @Override
