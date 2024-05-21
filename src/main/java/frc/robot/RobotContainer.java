@@ -6,10 +6,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.subsystem.ExampleSubsystem;
 
 public class RobotContainer {
+  private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+
   public RobotContainer() {
     configureBindings();
+
+    exampleSubsystem.setDefaultCommand(exampleSubsystem.cRun());
   }
 
   private void configureBindings() {}
