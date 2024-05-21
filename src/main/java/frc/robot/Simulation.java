@@ -50,6 +50,8 @@ public class Simulation {
     // Intake Simulation
     private static final FlywheelSim intakeSim = new FlywheelSim(DCMotor.getNeo550(1), 15.0, 0.1);
     public static final MotorController intakeMotor = new PWMSparkMax(2);
+    private static final Encoder intakeSimEncoder = new Encoder(6, 7);
+    public static final EncoderSim intakeEncoder = new EncoderSim(intakeSimEncoder);
 
     private static double updateIntakeSim() {
         double voltage = RobotController.getBatteryVoltage();
@@ -59,12 +61,16 @@ public class Simulation {
 
         intakeSim.update(0.02);
 
+        intakeEncoder.setRate(intakeSim.getAngularVelocityRPM());
+
         return intakeSim.getCurrentDrawAmps();
     }
     
     // Launcher Simulation
     private static final FlywheelSim launcherSim = new FlywheelSim(DCMotor.getNEO(2), 1.0, 0.005);
     public static final MotorController launcherMotor = new PWMSparkMax(3);
+    private static final Encoder launcherSimEncoder = new Encoder(8, 9);
+    public static final EncoderSim launcherEncoder = new EncoderSim(launcherSimEncoder);
 
     private static double updateLauncherSim() {
         double voltage = RobotController.getBatteryVoltage();
@@ -74,12 +80,16 @@ public class Simulation {
 
         launcherSim.update(0.02);
 
+        launcherEncoder.setRate(launcherSim.getAngularVelocityRPM());
+
         return launcherSim.getCurrentDrawAmps();
     }
 
     // Indexer Simulation
     private static final FlywheelSim indexerSim = new FlywheelSim(DCMotor.getNeo550(1), 5.0, 0.1);
     public static final MotorController indexerMotor = new PWMSparkMax(4);
+    private static final Encoder indexerSimEncoder = new Encoder(10, 11);
+    public static final EncoderSim indexerEncoder = new EncoderSim(indexerSimEncoder);
 
     private static double updateIndexerSim() {
         double voltage = RobotController.getBatteryVoltage();
@@ -89,12 +99,16 @@ public class Simulation {
 
         indexerSim.update(0.02);
 
+        indexerEncoder.setRate(indexerSim.getAngularVelocityRPM());
+
         return indexerSim.getCurrentDrawAmps();
     }
 
     // Agitator Simulation
     private static final FlywheelSim agitatorSim = new FlywheelSim(DCMotor.getNeo550(1), 5.0, 0.1);
     public static final MotorController agitatorMotor = new PWMSparkMax(5);
+    private static final Encoder agitatorSimEncoder = new Encoder(12, 13);
+    public static final EncoderSim agitatorEncoder = new EncoderSim(agitatorSimEncoder);
 
     private static double updateAgitatorSim() {
         double voltage = RobotController.getBatteryVoltage();
@@ -103,6 +117,8 @@ public class Simulation {
         SmartDashboard.putNumber("/Simulation/Agitator Voltage", agitatorMotor.get() * voltage);
 
         agitatorSim.update(0.02);
+
+        agitatorEncoder.setRate(agitatorSim.getAngularVelocityRPM());
 
         return agitatorSim.getCurrentDrawAmps();
     }
