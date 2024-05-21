@@ -110,14 +110,18 @@ public class Simulation {
     // Climber Simulation
     private static final ElevatorSim climberSim = new ElevatorSim(DCMotor.getNEO(2), 50.0, 50.0, 0.0254, 0.0, 2.0, true, 0.0);
     public static final MotorController climberMotor = new PWMSparkMax(6);
+    public static final EncoderSim climberEncoder = new EncoderSim(new Encoder(4, 5));
 
     private static double updateClimberSim() {
         double voltage = RobotController.getBatteryVoltage();
         climberSim.setInput(climberMotor.get() * voltage);
-
+        
         SmartDashboard.putNumber("/Simulation/Climber Voltage", climberMotor.get() * voltage);
 
         climberSim.update(0.02);
+
+        climberEncoder.setDistance(climberSim.getPositionMeters());
+        climberEncoder.setRate(climberSim.getVelocityMetersPerSecond());
 
         return climberSim.getCurrentDrawAmps();
     }
